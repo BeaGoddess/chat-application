@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import { SocketContext } from "../../utils/SocketContext";
+import { FaUserAlt } from 'react-icons/fa'
+import { BiSearch } from 'react-icons/bi'
+
 
 import { socket } from "../../socket";
 import { useNavigate } from 'react-router-dom';
@@ -227,7 +230,7 @@ function Room() {
                 <div className="bg-white rounded-l-lg overflow-hidden flex flex-col" style={{ maxWidth: "30%", minWidth: "200px" }}>
                     <div className="px-6 pt-6 pb-4  flex items-center ">
                         <div className="mr-3 bg-blue-300 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
-                            <i className="fa-solid fa-user" style={{ color: "#ffffff" }}></i>
+                            <FaUserAlt style={{ color: "#ffffff" }} />
                         </div>
 
                         <div className="text-lg font-medium line-clamp-*"> {name} </div>
@@ -236,7 +239,7 @@ function Room() {
                     <div className="px-2 relative mb-4">
                         <input className="  appearance-none border rounded-2xl w-full text-gray-700 leading-tight  bg-gray-100
                     focus:outline-none focus:shadow-outline pl-9 pr-3 py-2 text-xs" type="text" placeholder="Search..." onKeyUp={updateOptions} />
-                        <i className="fa-solid fa-magnifying-glass absolute left-5 bottom-1/2 transform translate-y-1/2 text-gray-300"></i>
+                        <BiSearch className="absolute left-5 bottom-1/2 transform translate-y-1/2 text-gray-300" />
                     </div>
 
                     <div className="overflow-auto relative flex-grow w-full">
@@ -249,8 +252,8 @@ function Room() {
                                         onClick={(e) => { openRoom(user.name) }}>
                                         <div className="flex items-center">
                                             <div className="mr-3 bg-blue-300 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
-                                                <i className="fa-solid fa-user" style={{ color: "#ffffff" }}>
-                                                </i></div>
+                                                <FaUserAlt style={{ color: "#ffffff" }} />
+                                            </div>
                                             <div className={`${listRooms.find((room) => room.user === user.name).notification !== 0 ? "font-bold" : "font-medium"} text-sm `}> {user.name} </div>
 
                                             {listRooms.find((room) => room.user === user.name).notification !== 0 &&
@@ -274,7 +277,7 @@ function Room() {
                             <div className="bg-blue-300 pt-6 px-4 pb-4 rounded-b-lg">
                                 <div className="flex items-center">
                                     <div className="mr-3 bg-white w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
-                                        <i className="fa-solid fa-user text-blue-300" ></i>
+                                        <FaUserAlt className="text-blue-300" />
                                     </div>
 
                                     <div className="text-base font-medium"> {listRooms.find((room) => room.open === true).user} </div>

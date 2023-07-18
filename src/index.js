@@ -15,7 +15,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Profile />} />
           <Route path="/teste" element={<ProfileT />} />
-          <Route path="room" element={<Room  />} />
+          <Route path="room" element={<Room />} />
         </Routes>
       </SocketProvider>
 
