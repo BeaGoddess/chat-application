@@ -21,8 +21,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
+    "start": "craco start --openssl-legacy-provider",
+    "build": "craco build --openssl-legacy-provider",
     "build-css": "npx tailwindcss build -o src/index.css",
     "test": "craco test",
     "eject": "react-scripts eject"
