@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Profile from './components/Perfil/setProfile';
@@ -9,12 +9,15 @@ import { SocketProvider } from './utils/SocketContext';
 
 export default function App() {
   return (
+    <BrowserRouter>
       <SocketProvider>
         <Routes>
           <Route path="/" element={<Profile />} />
           <Route path="/room" element={<Room />} />
         </Routes>
       </SocketProvider>
+    </BrowserRouter>
+
   );
 }
 
