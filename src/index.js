@@ -12,9 +12,8 @@ export default function App() {
     <BrowserRouter>
       <SocketProvider>
         <Routes>
-          <Route path="/" element={<Profile />}>
-            <Route path="/room" element={<Room />} />
-          </Route>
+          <Route path="/" element={<Profile />} />
+          <Route path="/room" element={<Room />} />
         </Routes>
       </SocketProvider>
 
