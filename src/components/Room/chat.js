@@ -5,10 +5,10 @@ import { BiSearch } from 'react-icons/bi'
 
 
 import { socket } from "../../socket";
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 
 function Room() {
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
     const { name } = useContext(SocketContext);
 
@@ -53,8 +53,11 @@ function Room() {
 
         const isSocketConfigured = socket.id !== undefined
 
+        console.log(isSocketConfigured, socket.id);
+
         if (!isSocketConfigured || name === "") {
-            navigate('/');
+            //navigate('/');
+            window.location.href = "https://chat-app-sockets.netlify.app/"
         }
 
         const receiveMessage = (send, message, receive) => {
