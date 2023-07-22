@@ -48,7 +48,6 @@ function Room() {
 
     }
 
-
     useEffect(() => {
 
         const isSocketConfigured = socket.id !== undefined
@@ -59,6 +58,15 @@ function Room() {
             //navigate('/');
             window.location.href = "https://chat-app-sockets.netlify.app/"
         }
+
+        const handleTabClose = event => {
+            event.preventDefault();
+
+            socket.emit("disconnect-user")
+        };
+
+        window.addEventListener('beforeunload', handleTabClose);
+
 
         const receiveMessage = (send, message, receive) => {
 
@@ -136,7 +144,6 @@ function Room() {
             }
         }
 
-
         const disconnectUser = (user) => {
 
             let rooms = listRooms.filter((room) => room.user !== user)
@@ -163,19 +170,16 @@ function Room() {
         socket.on('typing', typing)
 
 
-
-
         return () => {
             socket.off('receive-message', receiveMessage)
             socket.off('send-users', receiveUsers)
             socket.off('typing', typing)
             socket.off('remove-user', disconnectUser)
+            window.removeEventListener('beforeunload', handleTabClose);
         };
 
 
     }, [listUsers, listRooms]);
-
-
 
 
     const sendMessage = (event) => {
