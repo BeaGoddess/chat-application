@@ -9,14 +9,12 @@ import { SocketProvider } from './utils/SocketContext';
 
 export default function App() {
   return (
-    <Routes>
       <SocketProvider>
-          <Route path="/" exact component={<Profile />} />
-          <Route path="/room" component={<Room />} />
+        <Routes>
+          <Route path="/" element={<Profile />} />
+          <Route path="/room" element={<Room />} />
+        </Routes>
       </SocketProvider>
-
-    </Routes>
-
   );
 }
 
