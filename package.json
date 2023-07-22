@@ -23,6 +23,7 @@
   "scripts": {
     "start": "craco --openssl-legacy-provider start",
     "build": "craco --openssl-legacy-provider build",
+    "dev": "craco start",
     "build-css": "npx tailwindcss build -o src/index.css",
     "test": "craco test",
     "eject": "react-scripts eject"
