@@ -2,13 +2,15 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import { SocketContext } from "../../utils/SocketContext";
 import { FaUserAlt } from 'react-icons/fa'
 import { BiSearch } from 'react-icons/bi'
-
+import SoundFile from "../../media/notification.mp3"
 
 import { socket } from "../../socket";
-//import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Room() {
-    //const navigate = useNavigate();
+    const navigate = useNavigate();
+
+    const audioRef = React.createRef();
 
     const { name } = useContext(SocketContext);
 
@@ -55,8 +57,8 @@ function Room() {
         console.log(isSocketConfigured, socket.id);
 
         if (!isSocketConfigured || name === "") {
-            //navigate('/');
-            window.location.href = "https://chat-app-sockets.netlify.app/"
+            navigate('/');
+            //window.location.href = "https://chat-app-sockets.netlify.app/"
         }
 
         const handleTabClose = event => {
@@ -77,8 +79,11 @@ function Room() {
 
                 if (listRooms.find((room) => room.user === send).open === false) listRooms.find((room) => room.user === send).notification++
 
-
-
+                // Som a reproduzir pela notificação
+                const audio = audioRef.current;
+                audio.volume = 0.5;
+                audio.currentTime = 0;
+                audio.play();
 
                 listRooms.find((room) => room.user === send).typing = false;
                 setListRooms([...listRooms])
@@ -266,6 +271,11 @@ function Room() {
                                             {listRooms.find((room) => room.user === user.name).notification !== 0 &&
                                                 <div className="font-semibold mr-0 m-auto bg-blue-400 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 text-white"
                                                     style={{ fontSize: "11px" }}> {listRooms.find((room) => room.user === user.name).notification} </div>}
+
+                                            <audio ref={audioRef}>
+                                                <source src={SoundFile} type="audio/mpeg" />
+                                                Seu navegador não suporta o elemento de áudio.
+                                            </audio>
                                         </div>
                                     </div>
 
