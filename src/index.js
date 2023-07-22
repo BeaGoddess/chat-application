@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Profile from './components/Perfil/setProfile';
-import ProfileT from './components/Perfil/teste';
 import Room from './components/Room/chat';
 import reportWebVitals from './reportWebVitals';
 import { SocketProvider } from './utils/SocketContext';
@@ -14,7 +13,6 @@ export default function App() {
       <SocketProvider>
         <Routes>
           <Route path="/" element={<Profile />} />
-          <Route path="/teste" element={<ProfileT />} />
           <Route path="room" element={<Room />} />
         </Routes>
       </SocketProvider>
