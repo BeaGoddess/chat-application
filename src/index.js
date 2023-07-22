@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Profile from './components/Perfil/setProfile';
@@ -9,13 +9,13 @@ import { SocketProvider } from './utils/SocketContext';
 
 export default function App() {
   return (
-    <Switch>
+    <Routes>
       <SocketProvider>
           <Route path="/" exact component={<Profile />} />
           <Route path="/room" component={<Room />} />
       </SocketProvider>
 
-    </Switch>
+    </Routes>
 
   );
 }
