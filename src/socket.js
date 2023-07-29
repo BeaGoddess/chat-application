@@ -1,5 +1,6 @@
 import { io } from 'socket.io-client';
 
-// "undefined" means the URL will be computed from the `window.location` object
-//const URL = process.env.SOCKET_URL === 'production' ? undefined : 'https://chat-app-sockets-server.netlify.app';
-export const socket = io('https://chat-application-server-mc41.onrender.com', { transports : ['polling'], withCredentials: true});
+//export const socket = io('https://chat-application-server-mc41.onrender.com', { transports : ['polling'], withCredentials: true});
+export const socket = io("https://chat-application-server.beagoddess.repl.com", { transports: ['polling'], withCredentials: true });
+
+// https://chat-application-server.beagoddess.repl.co
